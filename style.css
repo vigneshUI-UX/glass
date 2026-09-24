@@ -1,0 +1,204 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #e50914 0%, #700000 100%);
+  color: #fff;
+  overflow: hidden;
+}
+
+.logo {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+  letter-spacing: -1px;
+}
+
+.cards-grid {
+  display: flex;
+  gap: 30px;
+  perspective: 1200px;
+}
+
+/* 3D Flip Card Container */
+.flip-card {
+  width: 280px;
+  height: 280px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Common Front & Back Styling */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  padding: 20px;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Glassmorphism Styling */
+.glass-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.music-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.img-wrapper {
+  width: 100%;
+  height: 160px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-text {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.card-text h3 {
+  font-size: 1.1rem;
+}
+
+.card-text p {
+  font-size: 0.65rem;
+  opacity: 0.7;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+/* Metadata Panel Display */
+.flip-card-back h4 {
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 12px;
+}
+
+.meta-row span {
+  opacity: 0.7;
+}
+
+/* Center Card Stack Animation */
+.center-card {
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+  cursor: pointer;
+}
+
+.cards-stack {
+  position: relative;
+  width: 120px;
+  height: 150px;
+  transform-style: preserve-3d;
+}
+
+.stacked-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: #000;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.stacked-card img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+}
+
+.stacked-card span {
+  font-size: 0.6rem;
+  display: block;
+  text-align: center;
+  padding: 4px;
+  background: #111;
+  color: #fff;
+}
+
+/* Default position of stack */
+.stack-1 { transform: translateZ(10px) rotate(-6deg); }
+.stack-2 { transform: translateZ(25px) rotate(0deg); }
+.stack-3 { transform: translateZ(40px) rotate(6deg); }
+
+/* Fan-out effect on hover */
+.center-card:hover .stack-1 {
+  transform: translate3d(-50px, -15px, 20px) rotate(-18deg);
+}
+
+.center-card:hover .stack-2 {
+  transform: translate3d(0px, -25px, 60px) rotate(0deg);
+}
+
+.center-card:hover .stack-3 {
+  transform: translate3d(50px, -15px, 40px) rotate(18deg);
+}
